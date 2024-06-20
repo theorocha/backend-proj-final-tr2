@@ -9,7 +9,7 @@ Este é o backend do projeto final de TR2, desenvolvido usando Flask e SQLAlchem
 
 ## Instalação
 
-1. Clone o repositório para sua máquina local:
+1. Clone o repositório para sua máquina local e execute os comandos:
 
    ```sh
    git clone https://github.com/theorocha/backend-proj-final-tr2.git

@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tanques.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 
 db = SQLAlchemy(app)
 
@@ -17,22 +17,9 @@ class Tanque(db.Model):
     capacidade_max = db.Column(db.Float, nullable=False)
     medida_atual = db.Column(db.Float, nullable=False)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-    if Tanque.query.count() == 0:
-        db.session.add_all([
-            Tanque(latitude_loc=-23.55052, longitude_loc=-46.6333, capacidade_max=1000.0, medida_atual=500.0),
-            Tanque(latitude_loc=-22.9068, longitude_loc=-43.1729, capacidade_max=1500.0, medida_atual=750.0),
-            Tanque(latitude_loc=-19.9167, longitude_loc=-43.9345, capacidade_max=1200.0, medida_atual=600.0),
-            Tanque(latitude_loc=-15.7801, longitude_loc=-47.9292, capacidade_max=2000.0, medida_atual=1000.0),
-            Tanque(latitude_loc=-30.0346, longitude_loc=-51.2177, capacidade_max=800.0, medida_atual=400.0)
-        ])
-        db.session.commit()
 
-
-
-@app.route('/tanques', methods=['GET'])
+@app.route('/')
+@app.route('/tanque', methods=['GET'])
 def listar_tanques():
     tanques = Tanque.query.all()
     return jsonify([{
@@ -43,7 +30,7 @@ def listar_tanques():
         'medida_atual': t.medida_atual
     } for t in tanques])
 
-@app.route('/tanques/<int:id>', methods=['GET'])
+@app.route('/tanque/<int:id>', methods=['GET'])
 def listar_tanque_por_id(id):
     tanque = Tanque.query.get(id)
     if tanque is None:
@@ -66,7 +53,7 @@ def novo_tanque():
         medida_atual=data['medida_atual']
     )
     db.session.add(novo_tanque)
-    db.session.commit()
+    db.session.commit() 
     return jsonify({'id': novo_tanque.id}), 201
 
 @app.route('/tanques/<int:id>', methods=['DELETE'])
@@ -75,7 +62,7 @@ def remover_tanque_por_id(id):
     if tanque is None:
         abort(404)
     db.session.delete(tanque)
-    db.session.commit()
+    db.session.commit() 
     return '', 204
 
 if __name__ == '__main__':

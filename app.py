@@ -46,7 +46,7 @@ def listar_tanque_por_id(id):
         'medida_atual': tanque.medida_atual
     })
 
-@app.route('/tanques', methods=['POST'])
+@app.route('/tanque', methods=['POST'])
 def novo_tanque():
     data = request.json
     novo_tanque = Tanque(
@@ -59,7 +59,7 @@ def novo_tanque():
     db.session.commit() 
     return jsonify({'id': novo_tanque.id}), 201
 
-@app.route('/tanques/<int:id>', methods=['DELETE'])
+@app.route('/tanque/<int:id>', methods=['DELETE'])
 def remover_tanque_por_id(id):
     tanque = Tanque.query.get(id)
     if tanque is None:

@@ -6,13 +6,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Configuração do SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tanques.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 
 db = SQLAlchemy(app)
 
-# Definição do modelo Tanque
 class Tanque(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     latitude_loc = db.Column(db.Float, nullable=False)
@@ -20,7 +18,6 @@ class Tanque(db.Model):
     capacidade_max = db.Column(db.Float, nullable=False)
     medida_atual = db.Column(db.Float, nullable=False)
 
-# Rotas da API
 @app.route('/')
 @app.route('/tanque', methods=['GET'])
 def listar_tanques():

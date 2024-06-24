@@ -33,7 +33,7 @@ Certifique-se de ter os seguintes programas instalados em sua máquina:
 Clone o repositório para sua máquina local usando o comando:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/theorocha/backend-proj-final-tr2.git
 ```
 
 ### 2. Navegar para o diretório do frontend

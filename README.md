@@ -1,6 +1,8 @@
-# Projeto Final de TR2 - Backend
+# Projeto Final de TR2
 
-Este é o backend do projeto final de TR2, desenvolvido usando Flask e SQLAlchemy. Este servidor gerencia informações sobre tanques, incluindo listar todos os tanques, listar tanques por ID, adicionar novos tanques e remover tanques por ID. O banco de dados utilizado é o SQLite.
+## Backend
+
+Backend do projeto final de TR2 foi desenvolvido usando Flask e SQLAlchemy. Este servidor gerencia informações sobre tanques, incluindo listar todos os tanques, listar tanques por ID, adicionar novos tanques e remover tanques por ID. O banco de dados utilizado é o SQLite.
 
 ## Requisitos
 

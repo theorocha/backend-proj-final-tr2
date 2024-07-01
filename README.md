@@ -19,18 +19,6 @@ Este projeto é uma API RESTful desenvolvida em Python utilizando Flask para ger
 - Flask-Migrate
 - Flask-CORS
 
-## Estrutura do Projeto
-
-O projeto está estruturado da seguinte forma:
-
-backend
-│
-├── app.py # Arquivo principal do aplicativo Flask
-├── requirements.txt # Arquivo de dependências do Python
-├── models.py # Definição dos modelos de banco de dados SQLAlchemy
-├── migrations/ # Diretório com migrações do banco de dados
-├── README.md # Documentação do backend
-
 ## Exemplos
 
 ```sh

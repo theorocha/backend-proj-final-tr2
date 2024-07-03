@@ -21,7 +21,6 @@ const NavBar = () => {
         </Typography>
         <Box>
           <Button color="inherit" component={Link} to="/">Dashboard</Button>
-          <Button color="inherit" component={Link} to="/historico-dados">Histórico de Dados</Button>
           <Button color="inherit" component={Link} to="/adicionar-tanque">Adicionar Tanque</Button>
         </Box>
       </Toolbar>

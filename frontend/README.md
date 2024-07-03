@@ -41,7 +41,7 @@ git clone https://github.com/seu-usuario/seu-repositorio.git
 Entre na pasta do frontend:
 
 ```bash
-cd frontend-proj-final-tr2/fuel-monitoring-system
+cd proj-final-tr2/frontend
 ```
 
 ### 3. Instalar dependências

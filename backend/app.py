@@ -21,6 +21,15 @@ class Tanque(db.Model):
     capacidade_max = db.Column(db.Float, nullable=False)
     medida_atual = db.Column(db.Float, nullable=False)
 
+class ESPStatus(db.Model):
+    tanque_id = db.Column(db.Integer, db.ForeignKey('tanque.id'), primary_key=True)
+    rssi = db.Column(db.Integer, nullable=False)
+    packet_loss = db.Column(db.Float, nullable=False)
+    uptime = db.Column(db.Float, nullable=False)
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow)
+
+    tanque = db.relationship('Tanque', backref=db.backref('esp_status', lazy=True))
+
 @app.route('/')
 @app.route('/tanque', methods=['GET'])
 def listar_tanques():
@@ -65,17 +74,31 @@ def novo_tanque():
 @app.route('/tanque/<int:id>/<string:data>', methods=['DELETE'])
 def remover_tanque_por_id(id, data):
     try:
-        data_dt = datetime.fromisoformat(data)
+        data_dt = datetime.fromisoformat(data.replace('T', ' '))
     except ValueError:
         abort(400, description="Data format should be ISO 8601 (YYYY-MM-DDTHH:MM:SS)")
 
-    tanque = Tanque.query.get((id, data_dt))
-    if tanque is None:
+    tanques = Tanque.query.filter_by(id=id, data=data_dt).all()
+    if not tanques:
         abort(404)
     
-    db.session.delete(tanque)
+    for tanque in tanques:
+        db.session.delete(tanque)
+    
     db.session.commit()
     return '', 204
+
+@app.route('/esp-status', methods=['GET'])
+def get_esp_status():
+    status = ESPStatus.query.all()
+    return jsonify([{
+        'tanque_id': s.tanque_id,
+        'rssi': s.rssi,
+        'packet_loss': s.packet_loss,
+        'uptime': s.uptime,
+        'last_updated': s.last_updated.isoformat()
+    } for s in status])
+
 
 # @app.route('/limpar-tanques', methods=['DELETE'])
 # def limpar_tanques():

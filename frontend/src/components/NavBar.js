@@ -1,4 +1,3 @@
-// src/components/NavBar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
@@ -22,6 +21,7 @@ const NavBar = () => {
         <Box>
           <Button color="inherit" component={Link} to="/">Dashboard</Button>
           <Button color="inherit" component={Link} to="/adicionar-tanque">Adicionar Tanque</Button>
+          <Button color="inherit" component={Link} to="/esp-status">Status das ESPs</Button>
         </Box>
       </Toolbar>
     </AppBar>

@@ -8,5 +8,6 @@ export const listarTanques = () => api.get('/tanque');
 export const listarTanquePorId = (id) => api.get(`/tanque/${id}`);
 export const adicionarTanque = (tanque) => api.post('/tanque', tanque);
 export const removerTanquePorIdData = (id, data) => api.delete(`/tanque/${id}/${data}`);
+export const getESPStatus = () => api.get('/esp-status');
 
 export default api;

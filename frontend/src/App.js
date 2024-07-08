@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import DetalhesTanque from './components/DetalhesTanque';
 import AdicionarTanque from './components/AdicionarTanque';
 import NavBar from './components/NavBar';
+import ESPStatusPage from './components/ESPStatusPage';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/tanque/:id" element={<DetalhesTanque />} />
             <Route path="/adicionar-tanque" element={<AdicionarTanque />} />
+            <Route path="/esp-status" element={<ESPStatusPage />} />
           </Routes>
         </Container>
       </Router>
